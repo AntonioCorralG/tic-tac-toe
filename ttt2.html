@@ -3,7 +3,6 @@
   <head>
     <meta charset="uf-8" />
     <title>Tic-Tac-Toe 1: Gonzalo Corral</title>
-    <script type="text/javascript" src="path-to-javascript-file.js"></script>
     <style type="text/css">
       #grid-container {
         display: grid;
@@ -12,7 +11,7 @@
         grid-template-rows: repeat(3, 100px);
       }
 
-      .ttBox {
+      .square {
         outline: 1px rgba(36, 25, 138, 0.609) solid;
         margin: 5px;
         display: flex;
@@ -20,23 +19,30 @@
         justify-content: center;
         font-size: 30px;
       }
-      .ttBox:hover {
+      .square:hover {
         background-color: grey;
+      }
+      #next-turn {
+        font-size: 1rem;
+        outline: 1px rgb(28, 103, 7) solid;
+      }
+      #win-condition {
+        font-size: 1rem;
+        outline: 1px rgb(255, 47, 175) solid;
       }
     </style>
   </head>
   <body>
-    <h1>Tic-Tac-Toe pt1: Gonzalo Corral</h1>
+    <h1>Tic-Tac-Toe pt2: Gonzalo Corral</h1>
     <div id="grid-container">
-      <div id="sq1" class="ttBox">X</div>
-      <div id="sq2" class="ttBox"></div>
-      <div id="sq3" class="ttBox"></div>
-      <div id="sq4" class="ttBox"></div>
-      <div id="sq5" class="ttBox">X</div>
-      <div id="sq6" class="ttBox"></div>
-      <div id="sq7" class="ttBox">O</div>
-      <div id="sq8" class="ttBox"></div>
-      <div id="sq9" class="ttBox"></div>
+        <script type="text/javascript" src="tt2Creation.js"></script>
+
+    </div>
+    <div id="next-turn">
+        <p>Next Turn:</p>
+    </div>
+    <div id="win-condition">
+        <p>Condition to Win:</p>
     </div>
   </body>
 </html>
