@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="uf-8" />
+    <title>Tic-Tac-Toe 1: Gonzalo Corral</title>
+    <style type="text/css">
+      #grid-container {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+      }
+
+      .ttBox {
+        outline: 1px rgba(36, 25, 138, 0.609) solid;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+      }
+      .ttBox:hover {
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tic-Tac-Toe pt1: Gonzalo Corral</h1>
+    <div id="grid-container">
+      <div id="sq1" class="ttBox">X</div>
+      <div id="sq2" class="ttBox"></div>
+      <div id="sq3" class="ttBox"></div>
+      <div id="sq4" class="ttBox"></div>
+      <div id="sq5" class="ttBox">X</div>
+      <div id="sq6" class="ttBox"></div>
+      <div id="sq7" class="ttBox">O</div>
+      <div id="sq8" class="ttBox"></div>
+      <div id="sq9" class="ttBox"></div>
+    </div>
+  </body>
+</html>
