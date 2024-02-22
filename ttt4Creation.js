@@ -74,14 +74,14 @@ window.addEventListener("load", function () {
 
       if (squareClicked.textContent === "" && turn === "X") {
         squareClicked.textContent = "X";
+        moves[squareClicked.id] = turn;
         document.getElementById("nextTurn").innerText = `Next Turn: O`;
         turn = "O";
-        moves[squareClicked.id] = turn;
       } else if (squareClicked.textContent === "" && turn === "O") {
         squareClicked.textContent = "O";
+        moves[squareClicked.id] = turn;
         document.getElementById("nextTurn").innerText = `Next Turn: X`;
         turn = "X";
-        moves[squareClicked.id] = turn;
       }
 
       if (checkWin()) {
