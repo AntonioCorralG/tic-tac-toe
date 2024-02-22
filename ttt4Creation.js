@@ -13,15 +13,34 @@ window.addEventListener("load", function () {
   document.getElementById("startGame").addEventListener("click", resetGame);
 
   const winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
+    "XXX------",
+    "---XXX---",
+    "------XXX",
+    "X--X--X--",
+    "-X--X--X-",
+    "--X--X--X",
+    "X---X---X",
+    "--X-X-X--",
   ];
+  function checkWin() {
+    for (let condition of winConditions) {
+      const player = condition[0];
+      if (
+        player !== "-" &&
+        (condition === moves.slice(0, 3).join("") ||
+          condition === moves.slice(3, 6).join("") ||
+          condition === moves.slice(6, 9).join("") ||
+          condition === moves[0] + moves[3] + moves[6] ||
+          condition === moves[1] + moves[4] + moves[7] ||
+          condition === moves[2] + moves[5] + moves[8] ||
+          condition === moves[0] + moves[4] + moves[8] ||
+          condition === moves[2] + moves[4] + moves[6])
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
   function startingPlayer() {
     let randomChoice = Math.random() < 0.5;
     startingPlayer = randomChoice ? "X" : "O";
@@ -29,11 +48,23 @@ window.addEventListener("load", function () {
     return startingPlayer;
   }
 
+  function checkStalemate() {
+    return !moves.includes("-") && !checkWin();
+  }
+
   function resetGame() {
     moves = ["-", "-", "-", "-", "-", "-", "-", "-", "-"];
     document.querySelectorAll(".square").forEach((square) => {
       square.textContent = "";
     });
+  }
+
+  function endGame(winner) {
+    if (winner) {
+      alert(`Player ${winner} wins!`);
+    } else {
+      alert("Stalemate!");
+    }
   }
 
   let tttBox = document.querySelectorAll(".square");
@@ -51,6 +82,12 @@ window.addEventListener("load", function () {
         document.getElementById("nextTurn").innerText = `Next Turn: X`;
         turn = "X";
         moves[squareClicked.id] = turn;
+      }
+
+      if (checkWin()) {
+        endGame(turn);
+      } else if (checkStalemate()) {
+        endGame(null);
       }
 
       console.log(moves);
